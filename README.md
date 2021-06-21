@@ -1,2 +1,2 @@
 # CasaXPStoPy_PlottingTool
-Publishable plots without the suffering
+Publishable XPS plots without the suffering
