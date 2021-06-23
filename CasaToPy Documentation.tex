@@ -1,0 +1,73 @@
+\documentclass[10pt]{report}
+\usepackage{setspace} \doublespacing
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm, a4paper, portrait]{geometry} %
+\usepackage[table]{xcolor}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[style=numeric-comp, backend=bibtex,sorting=none,firstinits=true,maxbibnames=99,minnames=3,eprint=false]{biblatex}
+
+\begin{document}
+\title{CasaToPy XPS plotting tool - Documentation \\\large Queensland University of Technology - Surface Science and 2D Materials \href{https://research.qut.edu.au/surface/}{https://research.qut.edu.au/surface/}}
+\author{Lee Ryan Atkinson \\ leeryanatkinson@hotmail.com}
+\date{2021}
+\maketitle
+\pagenumbering{arabic}
+
+\pagebreak
+
+\section{Introduction}
+
+CasaToPy XPS image production tool.
+
+This tool is born of numerous hours of frustration using CasaXPS to try and produce good looking, consistent, publishable XPS plots.
+
+Under the MIT software licence you may modify and redistribute the code freely.
+
+I wont be making any more changes to this myself as my goals and focus has moved on. Feel free to email me any questions and take on this project yourself.
+
+\section{Intended purpose}
+
+The purpose of this tool is to provide an easy way to plot de-convoluted CasaXPS data consistently in a publishable manner.
+
+CasaToPy is not a replacement for CasaXPS analysis and deconvolution, as such the raw data must have been processed prior to plotting.
+
+\section{Guide}
+\subsection{Installation}
+
+Using the compiled .exe version of the tool in windows does not require installation and can (in theory) work from anywhere on the machine. This tool is written in python, but is not required to run the complied .exe version of the tool. To get this version ask Jennifer for a copy.
+
+If you wish to make changes to the tool or run the tool without using the .exe, you need to install python onto your machine. The raw .py code is available in the github repository.
+
+\subsection{CasaXPS Data}
+
+The tool reads-in CasaXPS data that has been de-convoluted, with named spectrum data and peak contributions, and outputs to python matplotlib plots. It is designed to be used with CasaXPS data that has been exported to a file in the ASCII ColumnsOfTables format. 
+
+To export the CasaXPS data, in the top right hand corner of Casa you will find the ``export to ASCII'' button. When the next prompt appears it is required for the tool that you export to a ColumnsOfTables format, or else the CasaToPy tool will not work correctly.
+
+\subsection{Usage}
+
+The tool UI is text-based as of the current version and opens into the CMD, weather run directly or using the .exe.
+
+The first prompt will ask for the file path to the processed CasaXPS data (see 'CasaXPS Data'), this includes the file name, e.g ``\verb|C:Users\...\my_ColumnsOfTables_ASCII_file|'' without the quotation.
+
+Next you will be asked to input the number ``1'' or ``2'' to denote what energy scale you wish the plot to use, Kinetic energy or Binding energy. 
+
+Next you are asked to choose the scale of the data, either Intensity/Counts ``1'', or counts per second/CPS ``2''.
+
+Next you will be asked to select a colour to fill-in a peak, the peak will be named what you named it in CasaXPS, so make sure to name things correctly! While you can use any type of colour input accepted by matplotlib, I suggest using hex colour codes. 
+
+You will be asked to select a colour for every single peak in the data set you input, so this make take some time and unfortunately you can't see what the output is until the end.
+
+The only peaks you cannot select to fill in manually are the scale, background and envelope, which are set to red and black for uniformity and visibility.
+
+Your plot should now be output.
+
+\subsubsection{Possible errors}
+
+Whenever you are asked for an input make sure what you have typed/pasted is correct, there is no reverse and if you input an invalid option you will have to restart the whole process.
+
+When inputting data from CasaXPS make sure that you do not include any unanalysed data, it will not have the required columns for the tool to read and will output an error like "'CPS' is not in list". If there is data you do not wish to plot as it has not been de-convoluted, makes sure to delete it. The easiest way to do this is to make a backup of your casa data then delete the data set in casa before exporting to ASCII.
+
+\pagebreak
+
+\end{document}
